@@ -4,15 +4,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="css/styles.css">
+        <link href='https://fonts.googleapis.com/css?family=Denk One' rel='stylesheet'>
+        <script src="js/index.js"></script>
     </head>
     <body>
         <div class="container">
             <div class="row row-content">
                 <div class="col-5 game-settings">
-                    <div class="row row-content align-items-center">
-                        <div class="col-10 offset-1">
-                            <label>Level</label>
-                            <div class="level-options">
+                    <div class="row row-content align-self-center">
+                        <div class="col-12 offset-1">
+                            <label class="dash">Choose a Level</label>
+                            <div class="row field level-options">
                                 <ul>
                                     <li data-value="1">1</li>
                                     <li data-value="2">2</li>
@@ -22,35 +24,36 @@
                                 </ul>
                             </div>
                         </div>
-                    </div>
+                    </div><br>
                     <div class="row row-content align-items-center">
-                        <div class="col-8 offset-1">
-                            <label>Starting Player</label>
-                            <div class="player_choice">
+                        <div class="col-12 offset-1">
+                            <label class="dash">Starting Player</label>
+                            <div class="row field player_choice" id="depth">
                                 <ul>
-                                    <li data-value="0">Human</li>
+                                    <li data-value="0" class="active">Human</li>
                                     <li data-value="1">Robot Senpai</li>
                                 </ul>
                             </div>
+                        </div>
+                    </div><br>
+                    <div class="row row-content align-self-center">
+                        <div class="col-12 offset-2">
+                            <button id="newgame">New Game</button>
                         </div>
                     </div>
                 </div>
                 <div class="col-7">
                     <div class="row row-content game-board">
-                        This JavaScript Project may seems easy to build, but trust me there a lot of things to learn though.
-
-                            Anyone with JavaScript Basics (For loops, variables, functions, Arrays, if statements ... etc) can build this game.
-
-                            I will start the tutorial with a preview of the Tic Tac Toe game, and then talk a little bit about the canvas, how to draw on the canvas, and what does the method getContext() do. Then we will talk about the HTML elements we're going to need for our game.
-
-                            For JavaScript, we will need to files options.js and game.js they are self explanatory.
-                            OPTIONS.JS is where the code that handles the player's options lives, like what is the opponent and symbol it has chosen.
-                            GAME.JS is where our game code lives.
-
-                            This is Just the first part of tutorial, there still is a second part whe
+                        <div class="col-12 align-self-center">
+                            <canvas id="cvs" width="450" height="450"></canvas>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <!--JavaScript here-->
+        <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
+        <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="js/canvas.js"></script>
     </body>
 </html>
