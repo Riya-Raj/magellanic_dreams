@@ -1,0 +1,33 @@
+.game-board {
+    background: #262626;
+}
+
+body {
+    padding: 50px 0px 0px 0px;
+    z-index: 0;
+    background: #d9d9d9;
+}
+
+.game-settings {
+    background: rgb(245, 245, 245);
+}
+
+.level-options .player_choice ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;    
+    border: 1px solid;
+    width: 100%;
+}
+
+.level-options li, .player_choice li {
+    list-style-type: none;
+    overflow: hidden;
+    display: inline;
+    margin: 5px;
+    padding: 15px;
+}
+.level-options ul li:hover {
+    background-color: indigo;
+    color: lavenderblush;
+}
