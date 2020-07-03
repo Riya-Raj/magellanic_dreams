@@ -1,11 +1,11 @@
 .game-board {
-    background: #262626;
+    background: url('../img/board-background.jpg');
 }
 
 body {
-    padding: 50px 0px 50px 0px;
+    padding: 35px 0px 50px 0px;
     z-index: 0;
-    background: #d9d9d9;
+    background-image: url('../img/bodybg.jpg');
 }
 
 .game-settings {

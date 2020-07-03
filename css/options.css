@@ -1,0 +1,33 @@
+.options div.trial {
+    align-items: center;
+    padding: 10px; 
+    cursor: pointer;
+    border: 2px solid purple;
+    display: inline-flex;
+    border-radius: 10px;
+ }
+
+ .options div.newgame {
+    align-items: center;
+    background-color: royalblue;
+    border-radius: 5px;
+    border: none;
+    padding: 8px;
+    color: white;
+    cursor: pointer;
+ }
+
+ .options h5 {
+     margin: 20px 50px 15px 0px;
+ }
+
+ .options {
+     text-align: center;
+     padding-top: 50px;
+     padding-left: 50px;
+     padding-right: 50px;
+ }
+ 
+ .selected {
+     background: palevioletred;
+ }

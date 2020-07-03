@@ -1,56 +1,53 @@
- <html>
+<html>
     <head>
         <title>Tic Tac Toe</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="css/options.css">
         <link href='https://fonts.googleapis.com/css?family=Denk One' rel='stylesheet'>
-        <script src="js/index.js"></script>
     </head>
     <body>
         <div class="container">
-            <div class="row row-content">
+            <div class="row">
                 <div class="col-5 game-settings">
-                    <div class="row row-content align-self-center">
-                        <div class="col-12 offset-0.5">
+                    <div class="row align-self-center">
+                        <div class="col-12 offset-2">
                             <img class="human" src="img/human.png" alt="" height="200" width="100"> 
                             <span>vs</span>
                             <img class="robot" src="img/robot senpai.png" alt="" height="200" width="100">
                         </div>    
                     </div>
-                    <div class="row row-content align-self-center">
-                        <div class="col-12 offset-1">
-                            <label class="dash">Choose a Level</label>
-                            <div class="row field level-options">
-                                <ul>
-                                    <li data-value="1">1</li>
-                                    <li data-value="2">2</li>
-                                    <li data-value="3">3</li>
-                                    <li data-value="4">4</li>
-                                    <li data-value="0" class="active">Unlimited</li>
-                                </ul>
+                    <div class="row options align-self-center" id="depth">
+                        <div class="col-12">
+                            <h5>Starting Player</h5>
+                        </div>
+                        <div class="col-12">
+                            <div class="trial selected" id="human">Human</div>
+                            <div class="trial" id="robot">Robot Senpai</div>
+                        </div> 
+                        <div class="col-12">                           
+                            <h5>Choose a Level</h5>
+                        </div>
+                        <div class="col-12">
+                            <div class="trial" id="1">1</div>
+                            <div class="trial" id="2">2</div>
+                            <div class="trial" id="3">3</div>
+                            <div class="trial" id="4">4</div>
+                            <div class="trial selected" id="5">Unlimited</div>
+                        </div> 
+                        <div class="col-12">
+                            <h5>Let's start the game!!!</h5>
+                        </div>                       
+                        <div class="col-12">
+                            <div class="newgame">                                
+                                New Game
                             </div>
-                        </div>
-                    </div><br>
-                    <div class="row row-content align-items-center">
-                        <div class="col-12 offset-1">
-                            <label class="dash">Starting Player</label>
-                            <div class="row field player_choice" id="depth">
-                                <ul>
-                                    <li data-value="0" class="active">Human</li>
-                                    <li data-value="1">Robot Senpai</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div><br>
-                    <div class="row row-content align-self-center">
-                        <div class="col-12 offset-2">
-                            <button id="newgame">New Game</button>
-                        </div>
+                        </div>                           
                     </div>
                 </div>
                 <div class="col-7">
-                    <div class="row row-content game-board">
+                    <div class="row game-board">
                         <div class="col-12 align-self-center">
                             <canvas id="cvs" width="450" height="450"></canvas>
                         </div>
@@ -62,5 +59,6 @@
         <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
         <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
         <script src="js/canvas.js"></script>
+        <script src="js/index.js"></script>
     </body>
 </html>
