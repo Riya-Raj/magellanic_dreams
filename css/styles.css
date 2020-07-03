@@ -59,12 +59,9 @@ body {
     color: white;
 }
 
-.selected {
-    background: yellow;
-}
-
 canvas {
     padding: 50px;
     margin: 50px;
     align-items: center;
 }
+
