@@ -59,6 +59,14 @@ body {
     color: white;
 }
 
+.human {
+    margin-right: 30px;
+}
+
+.robot {
+    margin-left: 30px;
+}
+
 .selected {
     background: yellow;
 }
