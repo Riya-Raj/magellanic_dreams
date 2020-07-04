@@ -1,12 +1,21 @@
 const doc = document.getElementById("robot");
 const hum = document.getElementById("human");
 
+
+
+/*const player = new Object;
+let OPPONENT;*/
+
 doc.addEventListener("click", function() {
+    
     doc.classList.add("selected");
     hum.classList.remove("selected");
 });
 
 hum.addEventListener("click", function() {
+    /*OPPONENT = "robot";
+    player.human="X";
+    player.robot = "O";*/
     hum.classList.add("selected");
     doc.classList.remove("selected");
 });
@@ -21,5 +30,5 @@ function changeLevel() {
         })
     }
 };
-
 changeLevel();
+

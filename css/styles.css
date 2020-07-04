@@ -40,24 +40,24 @@ body {
     color: lavenderblush;
 }
 
-.field ul li.active {
+/*.field ul li.active {
     background-color: indigo;
     color: ivory;
-}
+}*/
 
 .dash {
     font-family: 'Denk One';
     font-size: 18px;
 }
 
-#newgame {
+/*#newgame {
     background-color: rgb(248, 100, 32);
     border-radius: 5px;
     border: none;
     padding: 8px;
     width: 60%;
     color: white;
-}
+}*/
 
 .human {
     margin-right: 30px;

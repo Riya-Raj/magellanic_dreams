@@ -27,7 +27,18 @@
      padding-left: 50px;
      padding-right: 50px;
  }
- 
+
+ #human:hover:not(.selected) {
+    background: rgb(243, 183, 203);
+ }
+ #robot:hover:not(.selected) {
+    background: rgb(243, 183, 203); 
+ }
+ .options div.trial:hover:not(.selected) {
+    background: rgb(243, 183, 203);
+ }
+
+
  .selected {
      background: palevioletred;
  }
