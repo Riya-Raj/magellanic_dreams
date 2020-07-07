@@ -15,49 +15,10 @@ body {
     padding-bottom: 20px;
 }
 
-.field {
-    width: 100%;
-}
-
-.field ul {
-    list-style: none;
-    padding: 0; 
-    width: 100%;
-}
-
-.field li {
-    list-style-type: none;
-    overflow: hidden;
-    display: inline-block;
-    padding: 15px;
-    border: 0.5px solid indigo;
-    cursor: pointer;
-    font-family: 'Denk One';
-}
-
-.field ul li:hover {
-    background-color: rgb(166, 123, 196);
-    color: lavenderblush;
-}
-
-/*.field ul li.active {
-    background-color: indigo;
-    color: ivory;
-}*/
-
 .dash {
     font-family: 'Denk One';
     font-size: 18px;
 }
-
-/*#newgame {
-    background-color: rgb(248, 100, 32);
-    border-radius: 5px;
-    border: none;
-    padding: 8px;
-    width: 60%;
-    color: white;
-}*/
 
 .human {
     margin-right: 30px;
