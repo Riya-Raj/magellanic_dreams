@@ -1,74 +1,69 @@
+const canvas = document.getElementById("cvs");
+const ctx = canvas.getContext("2d");
 
-    const canvas = document.getElementById("cvs");
-    const ctx = canvas.getContext("2d");
+let gameArray = new Array();
 
-    // BOARD VARIABLES
-    let board = [];
-    const COLUMN = 3;
-    const ROW = 3;
-    const SPACE_SIZE = 150;
+var imgX = new Image();
+imgX.src = "img/x.png";
 
-    /* let gameData = new Array(9);
-    //assuming the first player to play is the human
-    let currentPlayer = player.human;
+var imgY = new Image();
+imgY.src = "img/o.png";
 
-    const xImg = new Image();
-    xImg.src = "img/x.png";
+// BOARD VARIABLES
+const board = [];
 
-    const oImg = new Image();
-    oImg.src = "img/o.png"; */
-
-    //let GAME_OVER = false;
-function drawBoard(){
-    
-    let id = 0;
-    for(let i = 0; i < ROW; i++){
+function boardDetails() {
+    let boardvalue = 0;
+    for (let i = 0; i < 3; i++) {
         board[i] = [];
-        for(let j = 0; j < COLUMN; j++){
-            board[i][j] = id;
-            id++;
-
-            // draw the spaces
-            ctx.strokeStyle = "black";
-            ctx.lineWidth = 5;
-            ctx.strokeRect(j * SPACE_SIZE, i * SPACE_SIZE, SPACE_SIZE, SPACE_SIZE);
-        }
+        for (let j = 0; j < 3; j++) {
+            board[i][j] = boardvalue;
+            boardvalue++;            
+        }        
     }
-    //ctx.lineWidth = 5;
-    /*ctx.strokeRect(150, 0, 0, 450);
+    ctx.lineWidth = 5;
+    ctx.strokeRect(150, 0, 0, 450);
     ctx.strokeRect(300, 0, 0, 450);
     ctx.strokeRect(0, 150, 450, 0);
-    ctx.strokeRect(0, 300, 450, 0);*/
+    ctx.strokeRect(0, 300, 450, 0);
 }
-drawBoard();
+boardDetails();
 
+canvas.addEventListener("click", function(e) {
 
-/*canvas.addEventListener("click", function(event) {
-    // if(GAME_OVER) return;
-    let X = event.clientX - canvas.getBoundingClientRect().x;
-    let Y = event.clientY - canvas.getBoundingClientRect().y;
-    let i = Math.floor(Y/SPACE_SIZE);
-    let i = Math.floor(X/SPACE_SIZE);
+    var bDim = canvas.getBoundingClientRect();
+    let x = e.clientX - bDim.left;
+    let y = e.clientY - bDim.top;
+    let i = Math.floor(x/150);
+    let j = Math.floor(y/150);
     let id = board[i][j];
+    let tic = 'X';
+    let tac = 'O';
 
-    if(gameData[id]) return;
-    gameData[id] = currentPlayer;
-
-    drawOnBoard(); //To draw X or O
-
-    if(isWinner()) {
-        
-        GAME_OVER = true;
+    if (gameArray.length == 9) {
         return;
     }
-    if(currentPlayer == player.human) {
-        currentPlayer = player.robot;
-    } else {
-        currentPlayer = player.human;
+    if (gameArray == 0) {
+        ctx.drawImage(imgX, i*150+25, j*150+25, 100, 100);
+        gameArray.push('X');
+        board[i][j] = tic;
+    } 
+    else {
+        if (gameArray.length%2 != 0 && board[i][j] != 'X' && board[i][j] != 'O') {
+            ctx.drawImage(imgY, i*150+25, j*150+25, 100, 100);
+            gameArray.push('O');
+            board[i][j] = tac;
+        }
+        else if (gameArray.length%2 == 0 && (board[i][j] != 'X' && board[i][j] != 'O')) 
+        {
+            ctx.drawImage(imgX, i*150+25, j*150+25, 100, 100);
+            gameArray.push('X');
+            board[i][j] = tic;
+        }
     }
 
-});
+    console.log(gameArray);
+    alert(board[i][j] + " " + gameArray.length);
+})
 
-function drawOnBoard(   ){
-    ctx.drawI
-}*/
+
