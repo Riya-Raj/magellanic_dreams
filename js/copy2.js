@@ -2,7 +2,7 @@ const canvas = document.getElementById("cvs");
 const ctx = canvas.getContext("2d");
 const withFriend = document.getElementById("withfriend");
 
-let gameArray = new Array();
+var gameArray = new Array();
 let winLine;
 let winner;
 
@@ -29,14 +29,34 @@ function boardDetails() {
         }        
     }*/
     ctx.lineWidth = 5;
+    ctx.strokeStyle = "#000000";
     ctx.strokeRect(150, 0, 0, 450);
     ctx.strokeRect(300, 0, 0, 450);
     ctx.strokeRect(0, 150, 450, 0);
     ctx.strokeRect(0, 300, 450, 0);
+    
 }
 boardDetails();
 
+function clearBoard() {
+    const ctx = canvas.getContext("2d");
+    ctx.clearRect(0,0,450,450);
+    ctx.beginPath();
+    boardDetails();
+
+    board = [
+        ['', '', ''],
+        ['', '', ''],
+        ['', '', '']
+    ];
+    gameArray = [];
+}
+
+/* PLAYING WITH A FRIEND */
+
 withFriend.addEventListener("click", function() {
+
+    clearBoard();
 
     alert("Start playing with your friend. Let's see who wins!!");
 
@@ -52,6 +72,7 @@ withFriend.addEventListener("click", function() {
         let tac = 'O';
     
         if (gameArray.length == 9 || winner) {
+            //location.reload();
             return;
         }
         if (gameArray == 0) {
@@ -138,3 +159,6 @@ function toCheckWinner() {
         winner = true;
     }
 }
+
+/* PLAYING WITH ROBOT SENPAI --- AI PART */
+// will try this. for now I'm committing changes 
