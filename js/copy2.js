@@ -37,7 +37,7 @@ function boardDetails() {
 boardDetails();
 
 withFriend.addEventListener("click", function() {
-
+    
     alert("Start playing with your friend. Let's see who wins!!");
 
     canvas.addEventListener("click", function(e) {
@@ -52,6 +52,7 @@ withFriend.addEventListener("click", function() {
         let tac = 'O';
     
         if (gameArray.length == 9 || winner) {
+            location.reload();
             return;
         }
         if (gameArray == 0) {
@@ -74,7 +75,7 @@ withFriend.addEventListener("click", function() {
         }
 
         toCheckWinner();
-    
+        
         console.log(gameArray);
         alert(board[i][j] + " " + gameArray.length);
     })
@@ -111,7 +112,6 @@ function toCheckWinner() {
 
     for (let i = 0; i < 3; i++) {
         if(equalThree(board[i][0], board[i][1], board[i][2])) {
-            winLine = 'v';
             drawLine(i*150+75, 0, i*150+75, 450);
             gameWinner();
             winner = true;
