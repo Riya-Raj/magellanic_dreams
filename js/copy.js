@@ -5,15 +5,6 @@ const gameButton = document.getElementById("gamebtn");
 let player1;
 let gamelevel;
 
-function playersDet(first, second) {
-    this.first = first;
-    this.second = second;
-    this.display = function() {
-        alert(this.first + " " + this.second);
-    }
-    
-}
-
 doc.addEventListener("click", function() {
     doc.classList.add("selected");
     hum.classList.remove("selected");
@@ -26,6 +17,10 @@ hum.addEventListener("click", function() {
     player1 = "human";    
 });
 
+function playerOne() {
+    return player1;
+}
+
 function changeLevel() {
     for(let j = 1; j<=5; j++) {
         document.getElementById(j).addEventListener("click", function(){
@@ -34,26 +29,21 @@ function changeLevel() {
             }            
             document.getElementById(j).classList.add("selected");
             gamelevel = j;
-            alert("game level: " + j);
         })
     }
 };
 changeLevel();
 
-function startGame(gamelevel, playersDet) {
-    var playIcon;
-    var player;
-    if(player1 === "robot") {
-        player = new playersDet("robot", "human");
-    }
-    else if (player1 === "human") {
-        player = new playersDet("human", "robot");
-    }
-    
-    player.display();
-}
-
 gameButton.addEventListener("click", function() {
     alert("game has started now!!!");
-    startGame(gamelevel, playersDet);
+    startGame();
 })
+
+function playersDet(first, second) {
+    this.first = first;
+    this.second = second;
+    this.display = function() {
+        alert(this.first + " " + this.second);
+    }
+    
+}

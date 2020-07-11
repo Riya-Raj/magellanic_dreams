@@ -1,3 +1,28 @@
+const doc = document.getElementById("robot");
+const hum = document.getElementById("human");
+const gameButton = document.getElementById("gamebtn");
+
+let player1;
+let gamelevel;
+
+doc.addEventListener("click", function() {
+    doc.classList.add("selected");
+    hum.classList.remove("selected");
+    player1 = "robot";    
+});
+
+hum.addEventListener("click", function() {
+    hum.classList.add("selected");
+    doc.classList.remove("selected");
+    player1 = "human";    
+});
+
+function playerOne() {
+    return player1;
+}
+
+/////////////////////////////////////////////////
+///////////////////////////////////////////////
 const canvas = document.getElementById("cvs");
 const ctx = canvas.getContext("2d");
 const withFriend = document.getElementById("withfriend");
@@ -19,122 +44,56 @@ let board = [
     ['', '', '']
 ];
 
-function boardDetails() {
-    /*let boardvalue = 0;
-    for (let i = 0; i < 3; i++) {
-        board[i] = [];
-        for (let j = 0; j < 3; j++) {
-            board[i][j] = boardvalue;
-            boardvalue++;            
-        }        
-    }*/
-    ctx.lineWidth = 5;
-    ctx.strokeRect(150, 0, 0, 450);
-    ctx.strokeRect(300, 0, 0, 450);
-    ctx.strokeRect(0, 150, 450, 0);
-    ctx.strokeRect(0, 300, 450, 0);
-}
-boardDetails();
-
-withFriend.addEventListener("click", function() {
-    
+withFriend.addEventListener("click", function() {    
     alert("Start playing with your friend. Let's see who wins!!");
-
-    canvas.addEventListener("click", function(e) {
-
-        var bDim = canvas.getBoundingClientRect();
-        let x = e.clientX - bDim.left;
-        let y = e.clientY - bDim.top;
-        let i = Math.floor(x/150);
-        let j = Math.floor(y/150);
-        //let id = board[i][j];
-        let tic = 'X';
-        let tac = 'O';
-    
-        if (gameArray.length == 9 || winner) {
-            location.reload();
-            return;
-        }
-        if (gameArray == 0) {
-            ctx.drawImage(imgX, i*150+25, j*150+25, 100, 100);
-            gameArray.push('X');
-            board[i][j] = tic;
-        } 
-        else {
-            if (gameArray.length%2 != 0 && board[i][j] != 'X' && board[i][j] != 'O') {
-                ctx.drawImage(imgY, i*150+25, j*150+25, 100, 100);
-                gameArray.push('O');
-                board[i][j] = tac;
-            }
-            else if (gameArray.length%2 == 0 && (board[i][j] != 'X' && board[i][j] != 'O')) 
-            {
-                ctx.drawImage(imgX, i*150+25, j*150+25, 100, 100);
-                gameArray.push('X');
-                board[i][j] = tic;
-            }
-        }
-
-        toCheckWinner();
-        
-        console.log(gameArray);
-        alert(board[i][j] + " " + gameArray.length);
-    })
-
-    
-
+    humanWithFriend();
     if (winner) {
         return;
     }
 })
+///////////////////////////////////////////////////////////////////////
 
-function equalThree(a, b, c) {
-    return a == b && b == c && c == a && a != '' && b != '' && c != '';
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+///// Robot Senpai vs Human ///////////////////////////////////////////
+
+let currentPlayer;
+let senpai;
+let human;
+let senpaiImage;
+let humanImage;
+
+
+gameButton.addEventListener("click", function() {
+    alert("game has started now!!!");
+    startGame();
+})
+
+function startGame() {
+
+    playerOne();
+    if(player1 === "robot") {
+        senpai = 'X';
+        human = 'O';
+        senpaiImage = imgX;
+        humanImage = imgY;
+        currentPlayer = senpai;
+    }
+    else if (player1 === "human") {
+        senpai = 'O';
+        human = 'X';
+        senpaiImage = imgY;
+        humanImage = imgX;
+        currentPlayer = human;
+    }    
+    playTheGame();
+    alert(player1);
 }
 
-function drawLine(x1, y1, x2, y2) {
-    ctx.beginPath();
-    ctx.lineWidth = "5";
-    ctx.strokeStyle = "white";
-    ctx.moveTo(x1,y1);
-    ctx.lineTo(x2,y2);
-    ctx.stroke();
+function playTheGame() {
+    if (currentPlayer == human) {
+        humanMove();
+    }       
 }
 
-function gameWinner() {
-    if(gameArray.length != 0) {
-        alert("'X' wins the match!! CONGRATULATIONS!!");
-    } else {
-        alert("'O' wins the match!! CONGRATULATIONS!!");
-    }
-}
 
-function toCheckWinner() {
-
-    for (let i = 0; i < 3; i++) {
-        if(equalThree(board[i][0], board[i][1], board[i][2])) {
-            drawLine(i*150+75, 0, i*150+75, 450);
-            gameWinner();
-            winner = true;
-        } 
-    }
-
-    for (let j = 0; j < 3; j++) {
-        if(equalThree(board[0][j], board[1][j], board[2][j])) {
-            drawLine(0, j*150+75, 450, j*150+75);
-            gameWinner();
-            winner = true;
-        } 
-    }
-
-    if (equalThree(board[0][0], board[1][1], board[2][2])) {
-        drawLine(0,0,450,450);
-        gameWinner();
-        winner = true;
-    }
-    
-    if (equalThree(board[0][2], board[1][1], board[2][0])) {
-        drawLine(450,0,0,450);
-        gameWinner();
-        winner = true;
-    }
-}
