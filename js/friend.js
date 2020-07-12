@@ -11,25 +11,35 @@ function humanMove() {
         //let id = board[i][j];
     
         if (gameArray.length == 9 || winner) {
-            //location.reload();
+            location.reload();
             return;
         } 
 
-        if (currentPlayer == human && board[i][j] == '') {
+        if (currentPlayer == human && board[i][j] == '' && !winner) {
             ctx.drawImage(humanImage, i*150+25, j*150+25, 100, 100);
             gameArray.push(human);
             board[i][j] = human;
             currentPlayer = senpai;
+            toCheckWinner();
         }
         
-        if (currentPlayer == senpai) {
-            alert("robot turn");
-            currentPlayer = human;
-        }
-        
-        toCheckWinner();        
+        if (currentPlayer == senpai && !winner) {
+            //alert("robot turn");
+            for (let i = 0; i < 3; i++) {
+                for (let j = 0; j < 3; j++) {
+                    if (board[i][j] == '' && gameArray[gameArray.length-1] == human) {
+                        ctx.drawImage(senpaiImage, i*150+25, j*150+25, 100, 100);
+                        gameArray.push(senpai);
+                        board[i][j] = senpai;
+                        currentPlayer = human;
+                        toCheckWinner();
+                    }
+                }
+            }
+            
+        }              
         console.log(gameArray);
-        alert(board[i][j] + " " + gameArray.length);
+        //alert(board[i][j] + " " + gameArray.length);
         //return currentPlayer;
     })       
        

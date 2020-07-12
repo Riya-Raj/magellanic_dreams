@@ -28,6 +28,7 @@ const ctx = canvas.getContext("2d");
 const withFriend = document.getElementById("withfriend");
 
 var gameArray = new Array();
+var gameData = new Array(9);
 let winLine;
 let winner;
 

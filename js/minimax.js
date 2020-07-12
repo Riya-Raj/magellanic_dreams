@@ -1,3 +1,4 @@
+
 function bestMove() {
     // AI to make its turn
     let bestScore = -Infinity;
@@ -8,7 +9,7 @@ function bestMove() {
             if (board[i][j] == '') {
                 board[i][j] = senpai;
                 let score = minimax(board, 0, false);
-                board[i][j] = '';
+                //board[i][j] = '';
                 if (score > bestScore) {
                     bestScore = score;
                     move = { i, j };
@@ -16,7 +17,7 @@ function bestMove() {
             }
         }
     }
-    board[move.i][move.j] = senpai;
+    //board[move.i][move.j] = senpai;
     currentPlayer = human;
 }
 
@@ -63,3 +64,4 @@ function minimax(board, depth, isMaximizing) {
         return bestScore;
     }
 }
+
