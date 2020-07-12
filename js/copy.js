@@ -17,13 +17,13 @@ function playersDet(first, second) {
 doc.addEventListener("click", function() {
     doc.classList.add("selected");
     hum.classList.remove("selected");
-    player1 = "robot";    
+    player1 = "robot";  
 });
 
 hum.addEventListener("click", function() {
     hum.classList.add("selected");
     doc.classList.remove("selected");
-    player1 = "human";    
+    player1 = "human";   
 });
 
 function changeLevel() {

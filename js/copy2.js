@@ -1,6 +1,7 @@
 const canvas = document.getElementById("cvs");
 const ctx = canvas.getContext("2d");
 const withFriend = document.getElementById("withfriend");
+const withRobot = document.getElementById("gamebtn");
 
 var gameArray = new Array();
 let winLine;
@@ -38,20 +39,6 @@ function boardDetails() {
 }
 boardDetails();
 
-function clearBoard() {
-    const ctx = canvas.getContext("2d");
-    ctx.clearRect(0,0,450,450);
-    ctx.beginPath();
-    boardDetails();
-
-    board = [
-        ['', '', ''],
-        ['', '', ''],
-        ['', '', '']
-    ];
-    gameArray = [];
-}
-
 /* PLAYING WITH A FRIEND */
 
 withFriend.addEventListener("click", function() {
@@ -72,7 +59,6 @@ withFriend.addEventListener("click", function() {
         let tac = 'O';
     
         if (gameArray.length == 9 || winner) {
-            //location.reload();
             return;
         }
         if (gameArray == 0) {
