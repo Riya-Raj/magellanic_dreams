@@ -1,5 +1,5 @@
-function humanMove() {  
-    
+
+function playTheGame() {     
 
     canvas.addEventListener("click", function(e) {
 
@@ -15,7 +15,7 @@ function humanMove() {
             return;
         } 
 
-        if (currentPlayer == human && board[i][j] == '' && !winner) {
+        if (currentPlayer == human && board[i][j] != 'X' && board[i][j] != 'O' && !winner) {
             ctx.drawImage(humanImage, i*150+25, j*150+25, 100, 100);
             gameArray.push(human);
             board[i][j] = human;
@@ -23,20 +23,8 @@ function humanMove() {
             toCheckWinner();
         }
         
-        if (currentPlayer == senpai && !winner) {
-            //alert("robot turn");
-            for (let i = 0; i < 3; i++) {
-                for (let j = 0; j < 3; j++) {
-                    if (board[i][j] == '' && gameArray[gameArray.length-1] == human) {
-                        ctx.drawImage(senpaiImage, i*150+25, j*150+25, 100, 100);
-                        gameArray.push(senpai);
-                        board[i][j] = senpai;
-                        currentPlayer = human;
-                        toCheckWinner();
-                    }
-                }
-            }
-            
+        if (currentPlayer == senpai && !winner) {           
+            levelTwo();            
         }              
         console.log(gameArray);
         //alert(board[i][j] + " " + gameArray.length);
@@ -44,6 +32,46 @@ function humanMove() {
     })       
        
     
+}
+
+function levelTwo() {
+    let empty = [];
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+            if (board[i][j] != 'X' && board[i][j] != 'O') {
+                empty.push(board[i][j]);
+            }
+        }
+    }
+    let index = Math.floor(Math.random()*(empty.length-1));
+    let board_index = empty[index];
+    alert(index);
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+            if (board[i][j] == board_index) {
+                ctx.drawImage(senpaiImage, i*150+25, j*150+25, 100, 100);
+                gameArray.push(senpai);
+                board[i][j] = senpai;
+                currentPlayer = human;
+                toCheckWinner();
+            }
+        }
+    }
+    currentPlayer = human;
+}
+
+function levelOne() {
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+            if (board[i][j] == '' && gameArray[gameArray.length-1] == human) {
+                ctx.drawImage(senpaiImage, i*150+25, j*150+25, 100, 100);
+                gameArray.push(senpai);
+                board[i][j] = senpai;
+                currentPlayer = human;
+                toCheckWinner();
+            }
+        }
+    }
 }
 
 function humanWithFriend() {

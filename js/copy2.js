@@ -91,10 +91,5 @@ function startGame() {
     alert(player1);
 }
 
-function playTheGame() {
-    if (currentPlayer == human) {
-        humanMove();
-    }       
-}
 
 

@@ -1,12 +1,12 @@
 function boardDetails() {
-    /*let boardvalue = 0;
+    let boardvalue = 0;
     for (let i = 0; i < 3; i++) {
         board[i] = [];
         for (let j = 0; j < 3; j++) {
             board[i][j] = boardvalue;
             boardvalue++;            
         }        
-    }*/
+    }
     ctx.lineWidth = 5;
     ctx.strokeRect(150, 0, 0, 450);
     ctx.strokeRect(300, 0, 0, 450);
@@ -28,13 +28,8 @@ function drawLine(x1, y1, x2, y2) {
     ctx.stroke();
 }
 
-function gameWinner() {
-    if(gameArray.length != 0) {
-        alert("'X' wins the match!! CONGRATULATIONS!!");
-    } 
-    else {
-        alert("'O' wins the match!! CONGRATULATIONS!!");
-    }
+function gameWinner(winner) {
+    alert(winner + " wins the match!! CONGRATULATIONS!!");        
 }
 
 function toCheckWinner() {
@@ -42,29 +37,29 @@ function toCheckWinner() {
     for (let i = 0; i < 3; i++) {
         if(equalThree(board[i][0], board[i][1], board[i][2])) {
             drawLine(i*150+75, 0, i*150+75, 450);
-            gameWinner();
             winner = board[i][0];
+            gameWinner(winner);
         } 
     }
 
     for (let j = 0; j < 3; j++) {
         if(equalThree(board[0][j], board[1][j], board[2][j])) {
             drawLine(0, j*150+75, 450, j*150+75);
-            gameWinner();
             winner = board[0][j];
+            gameWinner(winner);
         } 
     }
 
     if (equalThree(board[0][0], board[1][1], board[2][2])) {
         drawLine(0,0,450,450);
-        gameWinner();
         winner = board[0][0];
+        gameWinner(winner);
     }
     
     if (equalThree(board[0][2], board[1][1], board[2][0])) {
         drawLine(450,0,0,450);
-        gameWinner();
         winner = board[0][2];
+        gameWinner(winner);
     }
 
     let emptySpaces = 0;
@@ -75,12 +70,12 @@ function toCheckWinner() {
             }
         }
     }
-    if (winner == null && emptySpaces == 0) {
+    /*if (winner == null && emptySpaces == 0) {
         return 'tie';
     } 
     else {
         return winner;
-    }
+    }*/
 }
 
 function changeLevel() {
