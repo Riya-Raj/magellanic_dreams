@@ -29,6 +29,7 @@ const withFriend = document.getElementById("withfriend");
 const withRobot = document.getElementById("gamebtn");
 
 var gameArray = new Array();
+var gameData = new Array(9);
 let winLine;
 let winner;
 
@@ -91,9 +92,4 @@ function startGame() {
     alert(player1);
 }
 
-function playTheGame() {
-    if (currentPlayer == human) {
-        humanMove();
-    }       
-}
 
