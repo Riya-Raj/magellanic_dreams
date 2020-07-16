@@ -64,13 +64,25 @@ let human;
 let senpaiImage;
 let humanImage;
 
-
 gameButton.addEventListener("click", function() {
     alert("game has started now!!!");
     startGame();
 })
 
-function startGame() {
+function changeLevel() {
+    for(let j = 1; j<=5; j++) {
+        document.getElementById(j).addEventListener("click", function(){
+            for(let i = 1; i <= 5 ; i++) {
+                document.getElementById(i).classList.remove("selected");
+            }            
+            document.getElementById(j).classList.add("selected");
+            gamelevel = j;
+        })
+    }
+};
+changeLevel();
+
+function startGame(gameLevel) {
 
     playerOne();
     if(player1 === "robot") {
@@ -88,7 +100,7 @@ function startGame() {
         currentPlayer = human;
     }    
     playTheGame();
-    alert(player1);
+    alert(player1 + ' ' + gamelevel);
 }
 
 

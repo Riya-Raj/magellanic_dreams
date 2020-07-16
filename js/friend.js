@@ -8,7 +8,7 @@ function playTheGame() {
         let y = e.clientY - bDim.top;
         let i = Math.floor(x/150);
         let j = Math.floor(y/150);
-        //let id = board[i][j];
+        
     
         if (gameArray.length == 9 || winner) {
             location.reload();
@@ -16,17 +16,46 @@ function playTheGame() {
         } 
 
         if (currentPlayer == human && board[i][j] != 'X' && board[i][j] != 'O' && !winner) {
+            let id = board[i][j];
             ctx.drawImage(humanImage, i*150+25, j*150+25, 100, 100);
             gameArray.push(human);
+            gameData[id] = human;
             board[i][j] = human;
             currentPlayer = senpai;
             toCheckWinner();
         }
         
-        if (currentPlayer == senpai && !winner) {           
-            levelTwo();            
+        if (currentPlayer == senpai && !winner) {
+            if (gamelevel == 1) {
+                levelOne();
+            }
+            else if (gamelevel == 2 || gamelevel == 3) {
+                levelTwo();
+            }           
+            else {
+                let pid = minimax( gameData, senpai ).id;
+                alert("robot pro move: " + pid);
+                for (let i = 0; i < 3; i++) {
+                    for (let j = 0; j < 3; j++) {
+                        if (board[i][j] == pid) {
+                            let id = board[i][j];
+                            ctx.drawImage(senpaiImage, i*150+25, j*150+25, 100, 100);
+                            gameArray.push(senpai);
+                            gameData[id] = senpai;
+                            board[i][j] = senpai;
+                            currentPlayer = human;
+                            toCheckWinner();
+                        }
+                    }
+                }
+                
+            }  
+
+            
+
+                     
         }              
-        console.log(gameArray);
+        console.log(gameData);
         //alert(board[i][j] + " " + gameArray.length);
         //return currentPlayer;
     })       
@@ -49,8 +78,10 @@ function levelTwo() {
     for (let i = 0; i < 3; i++) {
         for (let j = 0; j < 3; j++) {
             if (board[i][j] == board_index) {
+                let id = board[i][j];
                 ctx.drawImage(senpaiImage, i*150+25, j*150+25, 100, 100);
                 gameArray.push(senpai);
+                gameData[id] = senpai;
                 board[i][j] = senpai;
                 currentPlayer = human;
                 toCheckWinner();
@@ -63,9 +94,11 @@ function levelTwo() {
 function levelOne() {
     for (let i = 0; i < 3; i++) {
         for (let j = 0; j < 3; j++) {
-            if (board[i][j] == '' && gameArray[gameArray.length-1] == human) {
+            if (board[i][j] != 'X' && board[i][j] != 'O' && gameArray[gameArray.length-1] == human) {
+                let id = board[i][j];
                 ctx.drawImage(senpaiImage, i*150+25, j*150+25, 100, 100);
                 gameArray.push(senpai);
+                gameData[id] = senpai;
                 board[i][j] = senpai;
                 currentPlayer = human;
                 toCheckWinner();
@@ -97,7 +130,7 @@ function humanWithFriend() {
             board[i][j] = tic;
         } 
         else {
-            if (gameArray.length%2 != 0 && board[i][j] == '') {
+            if (gameArray.length%2 != 0 && board[i][j] != 'X' && board[i][j] != 'O') {
                 ctx.drawImage(imgY, i*150+25, j*150+25, 100, 100);
                 gameArray.push('O');
                 board[i][j] = tac;

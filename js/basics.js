@@ -63,31 +63,18 @@ function toCheckWinner() {
     }
 
     let emptySpaces = 0;
-    for (let i = 0; i < 3; i++) {
-        for (let j = 0; j < 3; j++) {
-            if (board[i][j] == '') {
-                emptySpaces++;
-            }
+    for (let i = 0; i < gameData.length; i++) {
+        if (!gameData[i]) {
+            emptySpaces++;
         }
     }
-    /*if (winner == null && emptySpaces == 0) {
-        return 'tie';
+    if (emptySpaces == 0) {
+        winner = 'tie';
+        gameWinner(winner);
     } 
-    else {
-        return winner;
-    }*/
+    
 }
 
-function changeLevel() {
-    for(let j = 1; j<=5; j++) {
-        document.getElementById(j).addEventListener("click", function(){
-            for(let i = 1; i <= 5 ; i++) {
-                document.getElementById(i).classList.remove("selected");
-            }            
-            document.getElementById(j).classList.add("selected");
-            gamelevel = j;
-        })
-    }
-};
-changeLevel();
+
+
 
