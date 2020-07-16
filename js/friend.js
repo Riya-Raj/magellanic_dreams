@@ -135,7 +135,7 @@ function humanWithFriend() {
                 gameArray.push('O');
                 board[i][j] = tac;
             }
-            else if (gameArray.length%2 == 0 && board[i][j] != 'X' && board[i][j] != 'O') {
+            else if (gameArray.length%2 == 0 && (board[i][j] == '')) {
                 ctx.drawImage(imgX, i*150+25, j*150+25, 100, 100);
                 gameArray.push('X');
                 board[i][j] = tic;

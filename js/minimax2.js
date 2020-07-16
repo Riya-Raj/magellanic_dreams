@@ -1,17 +1,49 @@
 //////////////////////////////////////////
 
+const COMBOS = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]
+];
+
+function isWinner(gameData, player){
+    for(let i = 0; i < COMBOS.length; i++){
+        let won = true;
+
+        for(let j = 0; j < COMBOS[i].length; j++){
+            let id = COMBOS[i][j];
+            won = gameData[id] == player && won;
+        }
+
+        if(won){
+            return true;
+        }
+    }
+    return false;
+}
+
+function isTie(gameData){
+    let isBoardFill = true;
+    for(let i = 0; i < gameData.length; i++){
+        isBoardFill = gameData[i] && isBoardFill;
+    }
+    if(isBoardFill){
+        return true;
+    }
+    return false;
+}
+
 function minimax(gameData, currentPlayer) {
 
-    toCheckWinner();
-    if (winner == senpai) {
-        return { evaluation : +10 };
-    }
-    if (winner == human) {
-        return { evaluation : -10 };
-    } 
-    if (winner == 'tie') {
-        return  { evaluation : 0 };
-    }
+    if( isWinner(gameData, senpai) ) return { evaluation : +10 };
+    if( isWinner(gameData, human)      ) return { evaluation : -10 };
+    if( isTie(gameData)                     ) return { evaluation : 0 };
+
     let moves = [];
     let emptyS = [];
 
