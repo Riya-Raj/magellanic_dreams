@@ -26,6 +26,7 @@ function playerOne() {
 const canvas = document.getElementById("cvs");
 const ctx = canvas.getContext("2d");
 const withFriend = document.getElementById("withfriend");
+const withRobot = document.getElementById("gamebtn");
 
 var gameArray = new Array();
 var gameData = new Array(9);
@@ -102,6 +103,5 @@ function startGame(gameLevel) {
     playTheGame();
     alert(player1 + ' ' + gamelevel);
 }
-
 
 
