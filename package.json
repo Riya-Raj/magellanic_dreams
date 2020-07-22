@@ -7,7 +7,7 @@
     "start": "npm run lite",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lite": "lite-server",
-    "build": "npm run build"
+    "build": "npm start node.js"
   },
   "author": "Riya Raj",
   "license": "ISC",
