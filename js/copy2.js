@@ -4,6 +4,7 @@ const gameButton = document.getElementById("gamebtn");
 
 let player1;
 let gamelevel;
+let board = [];
 
 doc.addEventListener("click", function() {
     doc.classList.add("selected");
@@ -39,13 +40,6 @@ imgX.src = "img/x.png";
 var imgY = new Image();
 imgY.src = "img/o.png";
 
-// BOARD VARIABLES
-let board = [
-    ['', '', ''],
-    ['', '', ''],
-    ['', '', '']
-];
-
 withFriend.addEventListener("click", function() {    
     alert("Start playing with your friend. Let's see who wins!!");
     humanWithFriend();
@@ -53,10 +47,7 @@ withFriend.addEventListener("click", function() {
         return;
     }
 })
-///////////////////////////////////////////////////////////////////////
 
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
 ///// Robot Senpai vs Human ///////////////////////////////////////////
 
 let currentPlayer;
@@ -65,10 +56,7 @@ let human;
 let senpaiImage;
 let humanImage;
 
-gameButton.addEventListener("click", function() {
-    alert("game has started now!!!");
-    startGame();
-})
+
 
 function changeLevel() {
     for(let j = 1; j<=5; j++) {

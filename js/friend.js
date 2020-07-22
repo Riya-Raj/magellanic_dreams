@@ -1,3 +1,7 @@
+gameButton.addEventListener("click", function() {
+    alert("game has started now!!!");
+    startGame();
+})
 
 function playTheGame() {     
 
@@ -33,27 +37,8 @@ function playTheGame() {
                 levelTwo();
             }           
             else {
-                let pid = minimax( gameData, senpai ).id;
-                alert("robot pro move: " + pid);
-                for (let i = 0; i < 3; i++) {
-                    for (let j = 0; j < 3; j++) {
-                        if (board[i][j] == pid) {
-                            let id = board[i][j];
-                            ctx.drawImage(senpaiImage, i*150+25, j*150+25, 100, 100);
-                            gameArray.push(senpai);
-                            gameData[id] = senpai;
-                            board[i][j] = senpai;
-                            currentPlayer = human;
-                            toCheckWinner();
-                        }
-                    }
-                }
-                
-            }  
-
-            
-
-                     
+                levelMax();                
+            }          
         }              
         console.log(gameData);
         //alert(board[i][j] + " " + gameArray.length);
@@ -61,6 +46,24 @@ function playTheGame() {
     })       
        
     
+}
+
+function levelMax() {
+    let pid = minimax( gameData, senpai ).id;
+    alert("robot pro move: " + pid);
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+            if (board[i][j] == pid) {
+                let id = board[i][j];
+                ctx.drawImage(senpaiImage, i*150+25, j*150+25, 100, 100);
+                gameArray.push(senpai);
+                gameData[id] = senpai;
+                board[i][j] = senpai;
+                currentPlayer = human;
+                toCheckWinner();
+            }
+        }
+    }
 }
 
 function levelTwo() {
@@ -135,7 +138,7 @@ function humanWithFriend() {
                 gameArray.push('O');
                 board[i][j] = tac;
             }
-            else if (gameArray.length%2 == 0 && (board[i][j] == '')) {
+            else if (gameArray.length%2 == 0 && board[i][j] != 'X' && board[i][j] != 'O') {
                 ctx.drawImage(imgX, i*150+25, j*150+25, 100, 100);
                 gameArray.push('X');
                 board[i][j] = tic;
@@ -145,7 +148,7 @@ function humanWithFriend() {
         toCheckWinner();
         
         console.log(gameArray);
-        alert(board[i][j] + " " + gameArray.length);
+        //alert(board[i][j] + " " + gameArray.length);
     })
     currentPlayer = senpai;
 

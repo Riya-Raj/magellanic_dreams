@@ -38,7 +38,6 @@ function toCheckWinner() {
         if(equalThree(board[i][0], board[i][1], board[i][2])) {
             drawLine(i*150+75, 0, i*150+75, 450);
             winner = board[i][0];
-            //gameWinner(winner);
         } 
     }
 
@@ -46,20 +45,17 @@ function toCheckWinner() {
         if(equalThree(board[0][j], board[1][j], board[2][j])) {
             drawLine(0, j*150+75, 450, j*150+75);
             winner = board[0][j];
-            //gameWinner(winner);
         } 
     }
 
     if (equalThree(board[0][0], board[1][1], board[2][2])) {
         drawLine(0,0,450,450);
         winner = board[0][0];
-        //gameWinner(winner);
     }
     
     if (equalThree(board[0][2], board[1][1], board[2][0])) {
         drawLine(450,0,0,450);
         winner = board[0][2];
-        //gameWinner(winner);
     }
 
     let emptySpaces = 0;
@@ -70,7 +66,6 @@ function toCheckWinner() {
     }
     if (emptySpaces == 0 && !winner) {
         winner = 'tie';
-        //gameWinner(winner);
     } 
     if (winner) {
         gameWinner(winner);
