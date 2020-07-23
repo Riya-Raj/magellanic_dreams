@@ -78,7 +78,3 @@ function toCheckWinner() {
         gameWinner(winner);
     }
 }
-
-
-
-
