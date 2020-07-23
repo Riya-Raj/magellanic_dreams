@@ -22,14 +22,21 @@ function equalThree(a, b, c) {
 function drawLine(x1, y1, x2, y2) {
     ctx.beginPath();
     ctx.lineWidth = "5";
-    ctx.strokeStyle = "white";
+    ctx.strokeStyle = "#00ffff";
     ctx.moveTo(x1,y1);
     ctx.lineTo(x2,y2);
     ctx.stroke();
 }
 
 function gameWinner(winner) {
-    alert(winner + " wins the match!! CONGRATULATIONS!!");        
+    $("#displayWinner").modal('show');
+    if(winner!='tie') {
+    document.getElementById("testH3").innerHTML = winner + " wins the match! Congratulations!!!";
+    }
+    else {
+        document.getElementById("testH3").innerHTML = "It's a draw! Both of you, better luck next time!";
+    }
+    //alert(winner + " wins the match!! CONGRATULATIONS!!");        
 }
 
 function toCheckWinner() {

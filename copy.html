@@ -8,6 +8,26 @@
         <link href='https://fonts.googleapis.com/css?family=Denk One' rel='stylesheet'>
     </head>
     <body>
+
+        <!-- MODAL POPUP - WHEN GAME ENDS --> 
+        <div id="displayWinner" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-lg" role="content">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title"></h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <h3 id="testH3"></h3>
+                    </div>
+                    <div class="modal-footer"> 
+                        <h3></h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+       <!-- END OF MODAL -->
+
         <div class="container">
             <div class="row">
                 <div class="col-5 game-settings">
@@ -34,7 +54,7 @@
                             <div class="trial" id="2">2</div>
                             <div class="trial" id="3">3</div>
                             <div class="trial" id="4">4</div>
-                            <div class="trial selected" id="5">Unlimited</div>
+                            <div class="trial" id="5">Unlimited</div>
                         </div> 
                         <div class="col-12">
                             <h5>Let's start the game!!!</h5>
@@ -67,5 +87,25 @@
         <script src="js/basics.js"></script>
         <script src="js/friend.js"></script>
         <script src="js/minimax2.js"></script>
+
+        <!-- CENTER ALIGN THE MODAL -->
+        <script>
+            $(document).ready(function(){
+                //$("#displayWinner").modal('show');
+                function alignModal(){
+                    var modalDialog = $(this).find(".modal-dialog");
+                    /* Applying the top margin on modal dialog to align it vertically center */
+                    modalDialog.css("margin-top", Math.max(0, ($(window).height() - modalDialog.height()) / 2));
+                }
+                    // Align modal when it is displayed
+                    $(".modal").on("shown.bs.modal", alignModal);
+    
+                 // Align modal when user resize the window
+                $(window).on("resize", function(){
+                    $(".modal:visible").each(alignModal);
+                });   
+            });
+        </script>
+
     </body>
 </html>

@@ -1,18 +1,21 @@
 .game-board {
-    background: url('../img/board-background.jpg');
+    background: #330033;
+    opacity: 0.95;
 }
 
 body {
     padding: 35px 0px 50px 0px;
     z-index: 0;
-    background-image: url('../img/bodybg.jpg');
+    background-image: url('../img/bodybg3.jpg');
 }
 
 .game-settings {
-    background: rgb(245, 245, 245);
+    background: #0d0d0d;
     padding-top: 15px;
     font-family: 'Denk One';
     padding-bottom: 20px;
+    color: white;
+    opacity: 0.90;
 }
 
 .dash {
@@ -34,3 +37,13 @@ canvas {
     align-items: center;
 }
 
+/* MODAL STYLES */
+.modal-content {
+    background: rgb(245, 245, 245);
+}
+.modal-header {
+    background-color: greenyellow;
+}
+.modal-footer {
+    background-color: greenyellow;
+}
