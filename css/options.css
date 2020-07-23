@@ -1,15 +1,15 @@
 .options div.trial {
     align-items: center;
-    padding: 10px; 
+    padding: 15px; 
     cursor: pointer;
-    border: 2px solid purple;
+    border: 3px solid #cc0000;
     display: inline-flex;
-    border-radius: 10px;
+    border-radius: 25px;
  }
 
  .options div.newgame {
     align-items: center;
-    background-color: royalblue;
+    background-color: #0033cc;
     border-radius: 5px;
     border: none;
     padding: 8px;
@@ -19,7 +19,7 @@
 
  .options div.withfriend {
    align-items: center;
-   background-color: rgb(63, 205, 50);
+   background-color: #00e600;
    border-radius: 5px;
    border: none;
    padding: 8px;
@@ -39,16 +39,19 @@
  }
 
  #human:hover:not(.selected) {
-    background: rgb(243, 183, 203);
+      background: #00004d;
+      color: #66ffff;
  }
  #robot:hover:not(.selected) {
-    background: rgb(243, 183, 203); 
+      background: #00004d; 
+      color: #66ffff;
  }
  .options div.trial:hover:not(.selected) {
-    background: rgb(243, 183, 203);
+      background: #00004d;
+      color: #66ffff;
  }
 
 
  .selected {
-     background: palevioletred;
+     background-color: #cc0000;
  }
