@@ -35,10 +35,10 @@ let winLine;
 let winner;
 
 var imgX = new Image();
-imgX.src = "img/x.png";
+imgX.src = "img/x1.png";
 
 var imgY = new Image();
-imgY.src = "img/o.png";
+imgY.src = "img/o1.png";
 
 withFriend.addEventListener("click", function() {    
     alert("Start playing with your friend. Let's see who wins!!");

@@ -50,7 +50,7 @@ function playTheGame() {
 
 function levelMax() {
     let pid = minimax( gameData, senpai ).id;
-    alert("robot pro move: " + pid);
+    //alert("robot pro move: " + pid);
     for (let i = 0; i < 3; i++) {
         for (let j = 0; j < 3; j++) {
             if (board[i][j] == pid) {
